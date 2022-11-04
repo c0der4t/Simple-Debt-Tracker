@@ -1,0 +1,257 @@
+﻿<Window x:Class="Simple_Debt_Tracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simple_Debt_Tracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl Grid.Row="1" Grid.Column="1">
+
+            <TabItem Header="Sales">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- POS Active Sale Receipt -->
+                    <StackPanel Orientation="Vertical"
+                                Grid.Column="1">
+                        <DataGrid x:Name="dbgActiveSale" AutoGenerateColumns="False"/>
+                        
+                    </StackPanel>
+
+                    <!-- POS User Items-->
+                    <StackPanel Orientation="Vertical"
+                                Grid.Column="3" VerticalAlignment="Center">
+
+                        
+
+                        <TextBlock Text="Select a Faculty Member:" Margin="0,5,0,2"/>
+                        <ComboBox x:Name="cmbbxFacultyMember"/>
+                        <TextBlock Text="Current Account Total:" Margin="0,5,0,2"/>
+
+                        <TextBlock Text="Item QTY" Margin="0,5,0,2"/>
+                        <TextBox x:Name="edtQTY" />
+
+                        <TextBlock Text="Item SKU/Code" Margin="0,5,0,2"/>
+                        <TextBox x:Name="edtSKU"/>
+
+                        <TextBlock Text="Description" Margin="0,5,0,2"/>
+                        <TextBox x:Name="edtItemDescr" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                    </StackPanel>
+
+                    <!-- POS Buttons 1 -->
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <Button x:Name="btn_salesRemoveItem" Content="Remove Selected Item"
+                                Padding="5,5,5,5" Margin="5,5,5,5"
+                                VerticalAlignment="Bottom"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Right"
+                                Grid.Column="3" Grid.Row="1">
+                        <Button x:Name="btn_salesCancel" Content="Cancel Sale"
+                                    Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_salesSave" Content="Process Sale"
+                                    Padding="5,5,5,5" Margin="5,5,5,5"/>
+                    </StackPanel>
+
+                </Grid>
+                
+            </TabItem>
+            
+            <TabItem Header="Stock">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0" HorizontalAlignment="Left">
+                        <Button x:Name="btn_stockImport" Content="IMPORT" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_stockAdd" Content="ADD" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_stockDelete" Content="DELETE" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0" HorizontalAlignment="Right">
+                        <Button x:Name="btn_stockCancel" Content="CANCEL" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_stockSave" Content="SAVE"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="dbgStock"
+                              AutoGenerateColumns="True"
+                              Grid.Row="1"/>
+
+                </Grid>
+
+            </TabItem>
+            
+            
+            <TabItem Header="Sales and Reports">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0">
+                        <Button x:Name="btn_reportRunReport" 
+                                Content="Generate Report"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <TextBlock Text="Select a report:" Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <ComboBox x:Name="cmbbx_reportSelectReports" Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                        <Button x:Name="btn_auditReverseSale" Content="Reverse Sale"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right" Grid.Row="1">
+                        <DatePicker x:Name="dedt_auditFilterDateStart" 
+                                    Margin="5,5,5,5"/>
+                        <DatePicker x:Name="dedt_auditFilterDateEnd" 
+                                    Margin="5,5,5,5"/>
+                        <TextBox x:Name="edt_auditFilterFaculty" MinWidth="100"
+                                 Margin="5,5,5,5"/>
+                        <Button x:Name="btn_auditApplyFilter" Content="Apply Filter"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_auditClearFilter" Content="Clear Filter"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_auditExportSales" Content="Export Result"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="dbgAudit"
+                              AutoGenerateColumns="True"
+                              Grid.Row="3"/>
+
+                </Grid>
+
+
+            </TabItem>
+            
+            <TabItem Header="Faculty">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0"
+                                HorizontalAlignment="Left">
+                        <Button x:Name="btn_facultyAdd" Content="ADD" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_facultyDelete" Content="DELETE" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0"
+                                HorizontalAlignment="Right">
+                        <Button x:Name="btn_facultyCancel" Content="CANCEL" 
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                        <Button x:Name="btn_facultySave" Content="SAVE"
+                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                    </StackPanel>
+                    
+                    <DataGrid x:Name="dbgFaculty"
+                              AutoGenerateColumns="True"
+                              Grid.Row="1"/>
+                    
+                </Grid>
+
+            </TabItem>
+            
+            <TabItem Header="Settings">
+
+                <ScrollViewer>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Settings Panel -->
+                        <StackPanel Orientation="Vertical" Grid.Column="0"
+                                    Margin="0,0,5,0">
+                            <CheckBox x:Name="chkbx_settingsRequireStockItem"
+                                      Content="Require Stock Items"/>
+                            <CheckBox x:Name="chkbx_settingsRequireLogin"
+                                      Content="Require Login"/>
+                        </StackPanel>
+
+                        <Rectangle Fill="Black" Grid.Column="1"
+                                   />
+
+                        <!-- Settings Explained Panel-->
+                        <StackPanel Orientation="Vertical" Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    >
+
+                            <TextBlock  Text="Require a stock item to exists to allow it to be added to a sale. If not ticked, SKU can be populated with anything!"/>
+                            <TextBlock  Text="Require a user to login before they can use the system"/>
+
+                        </StackPanel>
+
+
+                    </Grid>
+
+
+                </ScrollViewer>
+
+            </TabItem>
+            
+            
+        </TabControl>
+        
+    </Grid>
+</Window>
