@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Debt Tracker", "Simple Debt Tracker\Simple Debt Tracker.csproj", "{11AE1859-3C8A-4A2A-9B7D-FAEB1D910F48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple Debt Tracker", "Simple Debt Tracker\Simple Debt Tracker.csproj", "{11AE1859-3C8A-4A2A-9B7D-FAEB1D910F48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "databaseAPI", "databaseAPI\databaseAPI.csproj", "{DC69470C-BE90-4C3E-8138-48E1BE216A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{11AE1859-3C8A-4A2A-9B7D-FAEB1D910F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11AE1859-3C8A-4A2A-9B7D-FAEB1D910F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11AE1859-3C8A-4A2A-9B7D-FAEB1D910F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC69470C-BE90-4C3E-8138-48E1BE216A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC69470C-BE90-4C3E-8138-48E1BE216A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC69470C-BE90-4C3E-8138-48E1BE216A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC69470C-BE90-4C3E-8138-48E1BE216A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

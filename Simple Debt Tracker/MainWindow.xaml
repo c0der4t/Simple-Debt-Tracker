@@ -5,7 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simple_Debt_Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="stockViewSource"/>
+        <CollectionViewSource x:Key="facultyViewSource"/>
+        <CollectionViewSource x:Key="salesreportsViewSource"/>
+        
+    </Window.Resources>
+
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -20,7 +29,9 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
-        <TabControl Grid.Row="1" Grid.Column="1">
+        <TabControl x:Name="tbctrlMain" 
+                    Grid.Row="1" Grid.Column="1"
+                    SelectionChanged="tbctrlMain_SelectionChanged">
 
             <TabItem Header="Sales">
 
@@ -43,17 +54,21 @@
                     <StackPanel Orientation="Vertical"
                                 Grid.Column="1">
                         <DataGrid x:Name="dbgActiveSale" AutoGenerateColumns="False"/>
-                        
+
                     </StackPanel>
 
                     <!-- POS User Items-->
                     <StackPanel Orientation="Vertical"
                                 Grid.Column="3" VerticalAlignment="Center">
 
-                        
+
 
                         <TextBlock Text="Select a Faculty Member:" Margin="0,5,0,2"/>
-                        <ComboBox x:Name="cmbbxFacultyMember"/>
+                        <ComboBox x:Name="cmbbxFacultyMember"
+                                  ItemsSource="{Binding Source={StaticResource facultyViewSource}}"
+                                  SelectedItem="{Binding Path=ID}"
+                                  DisplayMemberPath="FirstName" SelectionChanged="cmbbxFacultyMember_SelectionChanged">
+                        </ComboBox>
                         <TextBlock Text="Current Account Total:" Margin="0,5,0,2"/>
 
                         <TextBlock Text="Item QTY" Margin="0,5,0,2"/>
@@ -84,9 +99,9 @@
                     </StackPanel>
 
                 </Grid>
-                
+
             </TabItem>
-            
+
             <TabItem Header="Stock">
 
                 <Grid>
@@ -114,14 +129,16 @@
                     </StackPanel>
 
                     <DataGrid x:Name="dbgStock"
-                              AutoGenerateColumns="True"
-                              Grid.Row="1"/>
+                              AutoGenerateColumns="True" 
+                              EnableRowVirtualization="True" 
+                              Grid.Row="1"
+                               ItemsSource="{Binding Source={StaticResource stockViewSource}}" />
 
                 </Grid>
 
             </TabItem>
-            
-            
+
+
             <TabItem Header="Sales and Reports">
 
                 <Grid>
@@ -138,14 +155,14 @@
                                 Padding="5,5,5,5" Margin="5,5,5,5"/>
                         <TextBlock Text="Select a report:" Padding="5,5,5,5" Margin="5,5,5,5"/>
                         <ComboBox x:Name="cmbbx_reportSelectReports" Padding="5,5,5,5" Margin="5,5,5,5"/>
-                        
+
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="1">
                         <Button x:Name="btn_auditReverseSale" Content="Reverse Sale"
                                 Padding="5,5,5,5" Margin="5,5,5,5"/>
-                        
+
 
                     </StackPanel>
 
@@ -166,17 +183,19 @@
 
                     </StackPanel>
 
-                    <DataGrid x:Name="dbgAudit"
-                              AutoGenerateColumns="True"
-                              Grid.Row="3"/>
+                    <DataGrid x:Name="dbgSalesReports"
+                              Grid.Row="3"
+                              ItemsSource="{Binding Source={StaticResource salesreportsViewSource}}"
+                              AutoGenerateColumns="True" 
+                              EnableRowVirtualization="True" />
 
                 </Grid>
 
 
             </TabItem>
-            
+
             <TabItem Header="Faculty">
-                
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -190,7 +209,7 @@
                                 Padding="5,5,5,5" Margin="5,5,5,5"/>
                         <Button x:Name="btn_facultyDelete" Content="DELETE" 
                                 Padding="5,5,5,5" Margin="5,5,5,5"/>
-                        
+
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="0"
@@ -200,15 +219,18 @@
                         <Button x:Name="btn_facultySave" Content="SAVE"
                                 Padding="5,5,5,5" Margin="5,5,5,5"/>
                     </StackPanel>
-                    
+
                     <DataGrid x:Name="dbgFaculty"
-                              AutoGenerateColumns="True"
-                              Grid.Row="1"/>
-                    
+                              Grid.Row="1"
+                              ItemsSource="{Binding Source={StaticResource facultyViewSource}}"
+                              AutoGenerateColumns="True" 
+                              EnableRowVirtualization="True" 
+                    />
+
                 </Grid>
 
             </TabItem>
-            
+
             <TabItem Header="Settings">
 
                 <ScrollViewer>
@@ -249,9 +271,9 @@
                 </ScrollViewer>
 
             </TabItem>
-            
-            
+
+
         </TabControl>
-        
+
     </Grid>
 </Window>
