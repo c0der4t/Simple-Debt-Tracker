@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simple_Debt_Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" 
+        Height="450" Width="800" 
+        Loaded="Window_Loaded" 
+        Background="#073B4C">
 
     <Window.Resources>
         <CollectionViewSource x:Key="stockViewSource"/>
@@ -31,7 +34,8 @@
 
         <TabControl x:Name="tbctrlMain" 
                     Grid.Row="1" Grid.Column="1"
-                    SelectionChanged="tbctrlMain_SelectionChanged">
+                    SelectionChanged="tbctrlMain_SelectionChanged"
+                    Background="#073B4C">
 
             <TabItem Header="Sales">
 
@@ -71,8 +75,8 @@
                         </ComboBox>
                         <TextBlock Text="Current Account Total:" Margin="0,5,0,2"/>
 
-                        <TextBlock Text="Item QTY" Margin="0,5,0,2"/>
-                        <TextBox x:Name="edtQTY" />
+                        <TextBlock Text="Item QTY" Margin="0,5,0,2" Foreground="White"/>
+                        <TextBox x:Name="edtQTY" Style="{StaticResource CustomEdit}" />
 
                         <TextBlock Text="Item SKU/Code" Margin="0,5,0,2"/>
                         <TextBox x:Name="edtSKU"/>
@@ -85,7 +89,7 @@
                     <!-- POS Buttons 1 -->
                     <StackPanel Grid.Column="1" Grid.Row="1">
                         <Button x:Name="btn_salesRemoveItem" Content="Remove Selected Item"
-                                Padding="5,5,5,5" Margin="5,5,5,5"
+                                Style="{StaticResource CustomButton}"
                                 VerticalAlignment="Bottom"/>
                     </StackPanel>
 
@@ -93,9 +97,9 @@
                                 HorizontalAlignment="Right"
                                 Grid.Column="3" Grid.Row="1">
                         <Button x:Name="btn_salesCancel" Content="Cancel Sale"
-                                    Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                    Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_salesSave" Content="Process Sale"
-                                    Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                    Style="{StaticResource CustomButton}"/>
                     </StackPanel>
 
                 </Grid>
@@ -113,19 +117,19 @@
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="0" HorizontalAlignment="Left">
                         <Button x:Name="btn_stockImport" Content="IMPORT" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_stockAdd" Content="ADD" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_stockDelete" Content="DELETE" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="0" HorizontalAlignment="Right">
                         <Button x:Name="btn_stockCancel" Content="CANCEL" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_stockSave" Content="SAVE"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                     </StackPanel>
 
                     <DataGrid x:Name="dbgStock"
@@ -152,7 +156,7 @@
                                 Grid.Row="0">
                         <Button x:Name="btn_reportRunReport" 
                                 Content="Generate Report"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <TextBlock Text="Select a report:" Padding="5,5,5,5" Margin="5,5,5,5"/>
                         <ComboBox x:Name="cmbbx_reportSelectReports" Padding="5,5,5,5" Margin="5,5,5,5"/>
 
@@ -161,7 +165,7 @@
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="1">
                         <Button x:Name="btn_auditReverseSale" Content="Reverse Sale"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
 
 
                     </StackPanel>
@@ -175,11 +179,11 @@
                         <TextBox x:Name="edt_auditFilterFaculty" MinWidth="100"
                                  Margin="5,5,5,5"/>
                         <Button x:Name="btn_auditApplyFilter" Content="Apply Filter"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                               Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_auditClearFilter" Content="Clear Filter"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_auditExportSales" Content="Export Result"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
 
                     </StackPanel>
 
@@ -206,18 +210,18 @@
                                 Grid.Row="0"
                                 HorizontalAlignment="Left">
                         <Button x:Name="btn_facultyAdd" Content="ADD" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_facultyDelete" Content="DELETE" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
 
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="0"
                                 HorizontalAlignment="Right">
                         <Button x:Name="btn_facultyCancel" Content="CANCEL" 
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                         <Button x:Name="btn_facultySave" Content="SAVE"
-                                Padding="5,5,5,5" Margin="5,5,5,5"/>
+                                Style="{StaticResource CustomButton}"/>
                     </StackPanel>
 
                     <DataGrid x:Name="dbgFaculty"

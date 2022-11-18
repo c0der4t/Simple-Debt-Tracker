@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Simple_Debt_Tracker"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/CustomButton.xaml"/>
+                <ResourceDictionary Source="/Styles/CustomEdit.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+    
 </Application>
